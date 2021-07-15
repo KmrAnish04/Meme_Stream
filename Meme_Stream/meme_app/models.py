@@ -2,9 +2,9 @@ from django.db import models
 
 # Create your models here.
 class MemeInfo(models.Model):
-    nameOfMemeOwner = models.CharField(max_length=50, null=True)
-    caption = models.TextField(null=True)
-    memeUrl = models.TextField(null=True)
+    nameOfMemeOwner = models.CharField(max_length=50, null=False, default='no name')
+    caption = models.TextField(null=False, default='N/A')
+    memeUrl = models.TextField(null=False, default='N/A')
     created = models.DateTimeField(auto_now=True)
 
     def __str__(self):

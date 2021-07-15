@@ -13,19 +13,19 @@
                     {% csrf_token %}
                   <div class="row">
                     <div class="input-field col s12">
-                      <input id="memerName" type="text" name="memerName" data-length="50">
+                      <input id="memerName" type="text" name="memerName" data-length="50" required>
                       <label for="memerName">Name</label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col s12">
-                      <textarea id="caption" name="caption" class="materialize-textarea" data-length="120"></textarea>
+                      <textarea id="caption" name="caption" class="materialize-textarea" data-length="120" required></textarea>
                       <label for="caption">Caption</label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col s12">
-                      <textarea id="memeURL" name="memeURL" class="materialize-textarea" data-length="10000000"></textarea>
+                      <textarea id="memeURL" name="memeURL" class="materialize-textarea" data-length="10000000" required></textarea>
                       <label for="memeURL">Meme URL</label>
                     </div>
                   </div>

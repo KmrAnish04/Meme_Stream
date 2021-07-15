@@ -4,6 +4,7 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name='home'),      
+    path('stream', views.stream, name='stream'),      
     path('openForm', views.openForm, name='openForm'),      
     path('submitMeme', views.submitMeme, name='submitMeme'),      
 ]
