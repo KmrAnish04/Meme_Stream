@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- <h1>{{ data }}</h1>     -->
+
+    <div class="row">
+        {% for element in data %}
+            <div class="col s3">
+                <div style="background-color: #eceff1; border-radius:20px" class="card">
+                <h6><b>{{element.0}}</b></h6>
+                <div class="card-image">
+                    <img style="height: 250px; width:auto;" src="{{ element.2 }}">
+                    <span class="card-title"><p><a href="{% url 'openEditForm'  %}" class="btn-floating" style="background-color: transparent;"><i class="material-icons ">edit</i></a></p></span>
+                </div>
+                <div class="card-content">
+                    <p>{{ element.1}}</p>
+                </div>
+                <div class="card-action">
+                    <p>Id: {{element.3}}</p>
+                </div>
+                </div>
+            </div>
+        {% endfor %}    
+    </div>
+
+
+
+{% endblock content %}
