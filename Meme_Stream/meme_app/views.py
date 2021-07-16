@@ -55,4 +55,8 @@ def submitMeme(request):
     return render(request, 'meme_app/submitMeme.html')
 
 def editMeme(request):
+    newCaption = request.POST.get('newCaption')
+    newMemeUrl = request.POST.get('newMemeURL')
+    memeId = request.POST.get('memeId')
+    
     return render(request, 'meme_app/streamPage.html')
