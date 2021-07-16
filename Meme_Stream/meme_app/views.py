@@ -59,6 +59,6 @@ def editMeme(request):
     newMemeUrl = request.POST.get('newMemeURL')
     memeId = request.POST.get('memeId')
 
-    
+    print(models.MemeInfo.objects.filter(id=memeId).exists())
     
     return render(request, 'meme_app/streamPage.html')
