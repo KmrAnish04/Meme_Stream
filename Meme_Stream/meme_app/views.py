@@ -1,6 +1,8 @@
 from django.db import models
+from django.http.response import Http404, HttpResponseBadRequest
 from django.shortcuts import render
 from . import models
+from django.http import HttpResponse, HttpResponseNotFound
 
 # Create your views here.
 def home(request):
@@ -53,10 +55,30 @@ def editMeme(request):
     memeId = request.POST.get('memeId')
 
     if models.MemeInfo.objects.filter(id=memeId).exists():
-        meme = models.MemeInfo.objects.get(id=memeId)
-        meme.caption = newCaption
-        meme.memeUrl = newMemeUrl
-        meme.save()
+        if newCaption and newMemeUrl:
+            meme = models.MemeInfo.objects.get(id=memeId)
+            meme.caption = newCaption
+            meme.memeUrl = newMemeUrl
+            meme.save()
+        elif newCaption and not newMemeUrl:
+            meme = models.MemeInfo.objects.get(id=memeId)
+            meme.caption = newCaption
+            meme.save()
+        elif not newCaption and newMemeUrl:
+            meme = models.MemeInfo.objects.get(id=memeId)
+            meme.memeUrl = newMemeUrl
+            meme.save()
+        elif not newCaption and not newMemeUrl:
+            raise Http404('Please fill atleast any of one field you want to edit! 😐')
+        else:
+            raise Http404('Something went wrong! Try again... 😥')
+            
+        # meme = models.MemeInfo.objects.get(id=memeId)
+        # meme.caption = newCaption
+        # meme.memeUrl = newMemeUrl
+        # meme.save()
+    else:
+        return HttpResponseNotFound('<h1>Woops, Meme Id not found! 🚫</h1>')
         
 
     print(models.MemeInfo.objects.filter(id=memeId).exists())

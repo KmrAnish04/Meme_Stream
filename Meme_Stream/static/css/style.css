@@ -1,9 +1,15 @@
 .card {
-    height: 400px;
+    height: 800px;
     overflow: hidden;
 }
 
 .card-image {
     height: 250px;
     overflow: hidden;
+}
+
+.blue-grey lighten-3{
+    position: absolute;
+    left: 100px;
+    top: 150px;
 }
