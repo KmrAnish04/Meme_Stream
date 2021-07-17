@@ -26,7 +26,6 @@ def stream(request):
         memeId = memers.id
         print(memers.id)
         data.append((name, caption, imgUrl, memeId))
-    # print(data)
     stream_data = {
         'data': data,
     }
@@ -45,12 +44,6 @@ def submitMeme(request):
 
     if request.POST.get('memerName') and request.POST.get('memeURL'):
         models.MemeInfo.objects.create(nameOfMemeOwner=memerName, caption=caption, memeUrl=memeURL)
-    # models.MemeInfo.objects.create(nameOfMemeOwner=memerName, caption=caption, memeUrl=memeURL)
-
-
-
-    # memeData = models.MemeInfo.objects.all()
-    # print(memeData)
 
     return render(request, 'meme_app/submitMeme.html')
 
@@ -58,6 +51,13 @@ def editMeme(request):
     newCaption = request.POST.get('newCaption')
     newMemeUrl = request.POST.get('newMemeURL')
     memeId = request.POST.get('memeId')
+
+    if models.MemeInfo.objects.filter(id=memeId).exists():
+        meme = models.MemeInfo.objects.get(id=memeId)
+        meme.caption = newCaption
+        meme.memeUrl = newMemeUrl
+        meme.save()
+        
 
     print(models.MemeInfo.objects.filter(id=memeId).exists())
     
