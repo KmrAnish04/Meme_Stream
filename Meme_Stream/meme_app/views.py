@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.base import Model
 from django.http.response import Http404, HttpResponseBadRequest
 from django.shortcuts import render
 from . import models
@@ -16,6 +17,22 @@ def home(request):
 def openEditForm(request):
     return render(request, 'meme_app/editMeme.html')
 
+def search(request):
+    searchElement = request.POST.get('searchObject')
+    id = models.MemeInfo.objects.get(id=searchElement)
+
+    searchResultData = []
+    if models.MemeInfo.objects.filter(id=searchElement).exists():
+        print(id.nameOfMemeOwner)
+        searchResultData.append((id.nameOfMemeOwner, id.caption, id.memeUrl))
+    else:
+        Http404('Id does\'nt exists, Try again')
+
+    resultToShow ={
+        'id':searchElement,
+        'searchResultData': searchResultData,
+    }
+    return render(request, 'meme_app/searchResults.html', resultToShow)
 
 # for streaming the posted memes
 def stream(request):
