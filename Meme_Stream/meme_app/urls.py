@@ -8,5 +8,6 @@ urlpatterns = [
     path('openForm', views.openForm, name='openForm'),      
     path('submitMeme', views.submitMeme, name='submitMeme'),      
     path('openEditForm', views.openEditForm, name='openEditForm'),
-    path('editMeme', views.editMeme, name='editMeme')
+    path('editMeme', views.editMeme, name='editMeme'),
+    path('search', views.search, name='search')
 ]
