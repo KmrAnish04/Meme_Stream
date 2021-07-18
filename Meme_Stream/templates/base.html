@@ -13,7 +13,7 @@
 <body>
 <nav class="blue-grey lighten-1">
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo" style="padding-left: 1%;">X-Meme</a>
+      <a href="{% url 'stream' %}" class="brand-logo" style="padding-left: 1%;">X-Meme</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="{% url 'stream' %}">Home</a></li>
         <li><a href="{% url 'openForm' %}">Post</a></li>
@@ -25,11 +25,12 @@
 <div class="container">
 
   <hr>  
-  <nav class="blue-grey lighten-3 offset-s2">
+  <nav class="blue-grey lighten-3">
     <div class="nav-wrapper">
-      <form>
+      <form action="{% url 'search' %}" method="post">
+        {% csrf_token %}
         <div class="input-field">
-          <input id="search" type="search" required>
+          <input id="search" name="searchObject" placeholder="Type Id of the meme" type="search" required>
           <label class="label-icon" for="search"><i class="material-icons ">search</i></label>
           <i class="material-icons ">close</i>
         </div>
