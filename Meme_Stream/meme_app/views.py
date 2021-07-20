@@ -19,20 +19,21 @@ def openEditForm(request):
 
 def search(request):
     searchElement = request.POST.get('searchObject')
-    id = models.MemeInfo.objects.get(id=searchElement)
 
     searchResultData = []
     if models.MemeInfo.objects.filter(id=searchElement).exists():
-        print(id.nameOfMemeOwner)
-        searchResultData.append((id.nameOfMemeOwner, id.caption, id.memeUrl))
-    else:
-        Http404('Id does\'nt exists, Try again')
-
-    resultToShow ={
+        Id = models.MemeInfo.objects.get(id=searchElement)
+        print(Id.nameOfMemeOwner)
+        searchResultData.append((Id.nameOfMemeOwner, Id.caption, Id.memeUrl))
+        resultToShow ={
         'id':searchElement,
         'searchResultData': searchResultData,
-    }
-    return render(request, 'meme_app/searchResults.html', resultToShow)
+            }
+        return render(request, 'meme_app/searchResults.html', resultToShow)
+    else:
+        return HttpResponseNotFound('woops! The Id does\'nt matched, please check and try again 🚫')
+
+    
 
 # for streaming the posted memes
 def stream(request):
