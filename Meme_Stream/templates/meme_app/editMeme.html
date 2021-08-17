@@ -7,10 +7,16 @@
         <br>
         <div class="container" style="padding: 2%; background-color: #eceff1; border-radius:30px" >
             <h4><b>Meme Stream</b></h4>
+            <small style="color: red;">Leave caption or image url field blank, if you dont want to edit that.</small>
             <br>
             <div class="row">
                 <form action="{% url 'editMeme'%}" method="post"class="col s12">
                     {% csrf_token %}
+                    <div class="row">
+                      <div class="input-field col s12">
+                      <input id="id" name="memeId" type="number" class="materialize-textarea" data-length="120" required>
+                      <label for="id">Enter the meme Id you want edit</label>
+                    </div>
                   <div class="row">
                     <div class="input-field col s12">
                       <textarea id="newCaption" name="newCaption" class="materialize-textarea" data-length="120"></textarea>
@@ -23,11 +29,7 @@
                       <label for="mewMemeURL">Enter the new image url</label>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="input-field col s12">
-                    <input id="id" name="memeId" type="number" class="materialize-textarea" data-length="120" required>
-                    <label for="id">Enter the meme Id you want edit</label>
-                  </div>
+                  
                   <button class="btn waves-effect blue-grey darken-1" type="submit" name="action">Submit
                     <i class="material-icons right">send</i>
                   </button>
