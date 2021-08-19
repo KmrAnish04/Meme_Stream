@@ -13,3 +13,39 @@
     left: 100px;
     top: 150px;
 }
+
+.link{
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+
+.list-non-bullet {
+    list-style: none;
+}
+
+.list-item-inline {
+    display: inline;
+    padding: 0rem 0.5rem;
+}
+
+.footer {
+    background-color: #78909c;
+    padding: 2rem 1rem;
+    color: white;
+    text-align: center;
+    border-top-right-radius: 1rem;
+}
+
+
+.footer .link {
+    color: white;
+}
+
+.footer .footer-header {
+    font-size: large;
+    font-weight: bold;
+}
+
+.footer ul{
+    padding-inline-start: 0px;
+}
